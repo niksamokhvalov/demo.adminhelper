@@ -1,6 +1,6 @@
 <?php
 
-namespace Demo\AdminGenerator\News\AdminInterface;
+namespace Demo\AdminHelper\News\AdminInterface;
 
 use DigitalWand\AdminHelper\Helper\AdminEditHelper;
 
@@ -11,5 +11,5 @@ use DigitalWand\AdminHelper\Helper\AdminEditHelper;
  */
 class NewsEditHelper extends AdminEditHelper
 {
-    protected static $model = '\Demo\AdminGenerator\News\NewsTable';
+    protected static $model = '\Demo\AdminHelper\News\NewsTable';
 }

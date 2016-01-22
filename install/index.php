@@ -4,13 +4,13 @@ use Bitrix\Main\Application;
 use Bitrix\Main\ModuleManager;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Loader;
-use Demo\AdminGenerator\News\NewsTable;
+use Demo\AdminHelper\News\NewsTable;
 
 IncludeModuleLangFile(__FILE__);
 
-class demo_admingenerator extends CModule
+class demo_adminhelper extends CModule
 {
-    var $MODULE_ID = 'demo.admingenerator';
+    var $MODULE_ID = 'demo.adminhelper';
 
     function __construct()
     {
@@ -24,9 +24,9 @@ class demo_admingenerator extends CModule
             $this->MODULE_VERSION_DATE = $arModuleVersion['VERSION_DATE'];
         }
 
-        $this->MODULE_NAME = Loc::getMessage('DEMO_ADMINGEN_NAME');
-        $this->MODULE_DESCRIPTION = Loc::getMessage('DEMO_ADMINGEN_DESCRIPTION');
-        $this->PARTNER_NAME = Loc::getMessage('DEMO_ADMINGEN_PARTNER_NAME');
+        $this->MODULE_NAME = Loc::getMessage('DEMO_AH_NAME');
+        $this->MODULE_DESCRIPTION = Loc::getMessage('DEMO_AH_DESCRIPTION');
+        $this->PARTNER_NAME = Loc::getMessage('DEMO_AH_PARTNER_NAME');
         $this->PARTNER_URI = 'http://samokhvalov.info';
     }
 
@@ -39,6 +39,7 @@ class demo_admingenerator extends CModule
             ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
             DATE_CREATE DATETIME,
             CREATED_BY INT,
+            MODIFIED_BY INT,
             TITLE VARCHAR(255),
             TEXT LONGTEXT,
             TEXT_TEXT_TYPE VARCHAR(255),

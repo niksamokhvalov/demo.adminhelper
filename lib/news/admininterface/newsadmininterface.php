@@ -1,6 +1,6 @@
 <?php
 
-namespace Demo\AdminGenerator\News\AdminInterface;
+namespace Demo\AdminHelper\News\AdminInterface;
 
 use Bitrix\Main\Localization\Loc;
 use DigitalWand\AdminHelper\Helper\AdminInterface;
@@ -28,7 +28,7 @@ class NewsAdminInterface extends AdminInterface
     {
         return [
             'MAIN' => [
-                'NAME' => Loc::getMessage('DEMO_ADMINGEN_NEWS'),
+                'NAME' => Loc::getMessage('DEMO_AH_NEWS'),
                 'FIELDS' => [
                     'ID' => [
                         'WIDGET' => new NumberWidget(),
@@ -65,6 +65,11 @@ class NewsAdminInterface extends AdminInterface
                         'READONLY' => true,
                         'HIDE_WHEN_CREATE' => true
                     ],
+                    'MODIFIED_BY' => [
+                        'WIDGET' => new UserWidget(),
+                        'READONLY' => true,
+                        'HIDE_WHEN_CREATE' => true
+                    ],
                 ]
             ]
         ];
@@ -76,8 +81,8 @@ class NewsAdminInterface extends AdminInterface
     public function helpers()
     {
         return [
-            '\Demo\AdminGenerator\News\AdminInterface\NewsListHelper',
-            '\Demo\AdminGenerator\News\AdminInterface\NewsEditHelper'
+            '\Demo\AdminHelper\News\AdminInterface\NewsListHelper',
+            '\Demo\AdminHelper\News\AdminInterface\NewsEditHelper'
         ];
     }
 }

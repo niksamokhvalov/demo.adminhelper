@@ -1,3 +1,3 @@
 <?php
 
-$MESS['DEMO_ADMINGEN_NEWS'] = 'Новости';
+$MESS['DEMO_AH_NEWS'] = 'Новости';
