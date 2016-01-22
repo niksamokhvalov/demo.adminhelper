@@ -9,16 +9,16 @@ if (!Loader::includeModule('digitalwand.admin_helper') || !Loader::includeModule
 
 Loc::loadMessages(__FILE__);
 
-return [
-    [
+return array(
+    array(
         'parent_menu' => 'global_menu_content',
         'sort' => 300,
         'icon' => 'fileman_sticker_icon',
         'page_icon' => 'fileman_sticker_icon',
         'text' => Loc::getMessage('DEMO_AH_NEWS'),
         'url' => NewsListHelper::getUrl(),
-        'more_url' => [
+        'more_url' => array(
             NewsEditHelper::getUrl(),
-        ],
-    ]
-];
+        )
+    )
+);

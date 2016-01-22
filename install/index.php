@@ -14,7 +14,7 @@ class demo_adminhelper extends CModule
 
     function __construct()
     {
-        $arModuleVersion = [];
+        $arModuleVersion = array();
 
         include(__DIR__ . '/version.php');
 

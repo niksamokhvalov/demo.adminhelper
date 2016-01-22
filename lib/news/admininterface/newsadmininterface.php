@@ -26,53 +26,53 @@ class NewsAdminInterface extends AdminInterface
      */
     public function fields()
     {
-        return [
-            'MAIN' => [
+        return array(
+            'MAIN' => array(
                 'NAME' => Loc::getMessage('DEMO_AH_NEWS'),
-                'FIELDS' => [
-                    'ID' => [
+                'FIELDS' => array(
+                    'ID' => array(
                         'WIDGET' => new NumberWidget(),
                         'READONLY' => true,
                         'FILTER' => true,
                         'HIDE_WHEN_CREATE' => true
-                    ],
-                    'TITLE' => [
+                    ),
+                    'TITLE' => array(
                         'WIDGET' => new StringWidget(),
                         'SIZE' => '80',
                         'FILTER' => '%',
                         'REQUIRED' => true
-                    ],
-                    'TEXT' => [
+                    ),
+                    'TEXT' => array(
                         'WIDGET' => new VisualEditorWidget(),
                         'HEADER' => false
-                    ],
-                    'SOURCE' => [
+                    ),
+                    'SOURCE' => array(
                         'WIDGET' => new UrlWidget(),
                         'HEADER' => false
-                    ],
-                    'IMAGE' => [
+                    ),
+                    'IMAGE' => array(
                         'WIDGET' => new FileWidget(),
                         'IMAGE' => true,
                         'HEADER' => false
-                    ],
-                    'DATE_CREATE' => [
+                    ),
+                    'DATE_CREATE' => array(
                         'WIDGET' => new DateTimeWidget(),
                         'READONLY' => true,
                         'HIDE_WHEN_CREATE' => true
-                    ],
-                    'CREATED_BY' => [
+                    ),
+                    'CREATED_BY' => array(
                         'WIDGET' => new UserWidget(),
                         'READONLY' => true,
                         'HIDE_WHEN_CREATE' => true
-                    ],
-                    'MODIFIED_BY' => [
+                    ),
+                    'MODIFIED_BY' => array(
                         'WIDGET' => new UserWidget(),
                         'READONLY' => true,
                         'HIDE_WHEN_CREATE' => true
-                    ],
-                ]
-            ]
-        ];
+                    ),
+                )
+            )
+        );
     }
 
     /**
@@ -80,9 +80,9 @@ class NewsAdminInterface extends AdminInterface
      */
     public function helpers()
     {
-        return [
+        return array(
             '\Demo\AdminHelper\News\AdminInterface\NewsListHelper',
             '\Demo\AdminHelper\News\AdminInterface\NewsEditHelper'
-        ];
+        );
     }
 }

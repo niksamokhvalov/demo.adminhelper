@@ -26,51 +26,51 @@ class NewsTable extends DataManager
      */
     public static function getMap()
     {
-        return [
-            'ID' => [
+        return array(
+            'ID' => array(
                 'data_type' => 'integer',
                 'primary' => true,
                 'autocomplete' => true,
-            ],
-            'DATE_CREATE' => [
+            ),
+            'DATE_CREATE' => array(
                 'data_type' => 'datetime',
                 'title' => Loc::getMessage('DEMO_AH_NEWS_DATE_CREATE'),
                 'default_value' => new DateTime()
-            ],
-            'CREATED_BY' => [
+            ),
+            'CREATED_BY' => array(
                 'data_type' => 'integer',
                 'title' => Loc::getMessage('DEMO_AH_NEWS_CREATED_BY'),
                 'default_value' => static::getUserId()
-            ],
-            'MODIFIED_BY' => [
+            ),
+            'MODIFIED_BY' => array(
                 'data_type' => 'integer',
                 'title' => Loc::getMessage('DEMO_AH_NEWS_MODIFIED_BY'),
                 'default_value' => static::getUserId()
-            ],
-            'TITLE' => [
+            ),
+            'TITLE' => array(
                 'data_type' => 'string',
                 'title' => Loc::getMessage('DEMO_AH_NEWS_TITLE')
-            ],
-            'TEXT' => [
+            ),
+            'TEXT' => array(
                 'data_type' => 'text',
                 'title' => Loc::getMessage('DEMO_AH_NEWS_TEXT')
-            ],
+            ),
             // Для всех полей, используемых визивигом, нужно создавать в таблице атрибут с суффиксом _TEXT_TYPE.
             // В нём будет храниться информация о типе сохранённого контента (ХТМЛ или обычный текст).
-            'TEXT_TEXT_TYPE' => [
+            'TEXT_TEXT_TYPE' => array(
                 'data_type' => 'string'
-            ],
-            'SOURCE' => [
+            ),
+            'SOURCE' => array(
                 'data_type' => 'string',
                 'title' => Loc::getMessage('DEMO_AH_NEWS_SOURCE')
-            ],
+            ),
             // Хранением файлов занимается Битрикс (хотя это вовсе необязательно, вы можете описать свою логику).
             // В атрибуте таблицы будет хранится идентификатор файла.
-            'IMAGE' => [
+            'IMAGE' => array(
                 'data_type' => 'integer',
                 'title' => Loc::getMessage('DEMO_AH_NEWS_IMAGE')
-            ],
-        ];
+            ),
+        );
     }
 
     /**
@@ -79,19 +79,19 @@ class NewsTable extends DataManager
     public static function update($primary, array $data)
     {
         $data['MODIFIED_BY'] = static::getUserId();
-        
+
         return parent::update($primary, $data);
     }
 
     /**
      * Возвращает идентификатор пользователя.
-     * 
+     *
      * @return int|null
      */
     public static function getUserId()
     {
         global $USER;
-        
+
         return $USER->GetID();
     }
 }
