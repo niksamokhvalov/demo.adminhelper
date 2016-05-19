@@ -95,7 +95,8 @@ class NewsTable extends DataManager
         return $USER->GetID();
     }
 
-    public static function getFilePath() {
+    public static function getFilePath()
+    {
         return __FILE__;
     }
 }
