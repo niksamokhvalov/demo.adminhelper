@@ -5,27 +5,21 @@ namespace Demo\AdminHelper\News\AdminInterface;
 use Bitrix\Main\Localization\Loc;
 use DigitalWand\AdminHelper\Helper\AdminInterface;
 use DigitalWand\AdminHelper\Widget\DateTimeWidget;
-use DigitalWand\AdminHelper\Widget\FileWidget;
 use DigitalWand\AdminHelper\Widget\NumberWidget;
-use DigitalWand\AdminHelper\Widget\OrmElementWidget;
 use DigitalWand\AdminHelper\Widget\StringWidget;
-use DigitalWand\AdminHelper\Widget\UrlWidget;
 use DigitalWand\AdminHelper\Widget\UserWidget;
-use DigitalWand\AdminHelper\Widget\VisualEditorWidget;
 
 Loc::loadMessages(__FILE__);
 
-/**
- * Описание интерфейса (табок и полей) админки новостей.
- *
- * {@inheritdoc}
- */
-class NewsAdminInterface extends AdminInterface
+class CategoriesAdminInterface extends AdminInterface
 {
-    public function dependencies()
+    /**
+     * @inheritdoc
+     */
+    /*public function dependencies()
     {
-        return array('\Demo\AdminHelper\News\AdminInterface\CategoriesAdminInterface');
-    }
+        return array('\Demo\AdminHelper\News\AdminInterface\NewsAdminInterface');
+    }*/
 
     /**
      * @inheritdoc
@@ -42,33 +36,11 @@ class NewsAdminInterface extends AdminInterface
                         'FILTER' => true,
                         'HIDE_WHEN_CREATE' => true
                     ),
-                    'CATEGORY_ID' => array(
-                        'WIDGET' => new OrmElementWidget(),
-                        'TITLE' => Loc::getMessage('DEMO_AH_NEWS_CATEGORY'),
-                        'FILTER' => true,
-                        'HEADER' => false,
-                        'TEMPLATE' => 'select',
-                        'HELPER' => '\Demo\AdminHelper\News\AdminInterface\CategoriesListHelper',
-                        'REQUIRED' => true,
-                    ),
                     'TITLE' => array(
                         'WIDGET' => new StringWidget(),
                         'SIZE' => '80',
                         'FILTER' => '%',
                         'REQUIRED' => true
-                    ),
-                    'TEXT' => array(
-                        'WIDGET' => new VisualEditorWidget(),
-                        'HEADER' => false
-                    ),
-                    'SOURCE' => array(
-                        'WIDGET' => new UrlWidget(),
-                        'HEADER' => false
-                    ),
-                    'IMAGE' => array(
-                        'WIDGET' => new FileWidget(),
-                        'IMAGE' => true,
-                        'HEADER' => false
                     ),
                     'DATE_CREATE' => array(
                         'WIDGET' => new DateTimeWidget(),
@@ -91,13 +63,28 @@ class NewsAdminInterface extends AdminInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function helpers()
     {
         return array(
-            '\Demo\AdminHelper\News\AdminInterface\NewsListHelper',
-            '\Demo\AdminHelper\News\AdminInterface\NewsEditHelper'
+            '\Demo\AdminHelper\News\AdminInterface\CategoriesEditHelper' => array(
+                'BUTTONS' => array(
+                    'RETURN_TO_LIST' => array(
+                        'TEXT' => Loc::getMessage('MOS_CONTENT_PROGRAMS_SECTION_RETURN_TO_LIST'),
+                    ),
+                    'ADD_ELEMENT' => array(
+                        'TEXT' => Loc::getMessage('MOS_CONTENT_PROGRAMS_SECTION_CREATE_NEW'),
+                    ),
+                    'DELETE_ELEMENT' => array(
+                        'TEXT' => Loc::getMessage('MOS_CONTENT_PROGRAMS_SECTION_DELETE_ELEMENT'),
+                    ),
+                    'ACTIONS' => array(
+                        'TEXT' => Loc::getMessage('MOS_CONTENT_PROGRAMS_SECTION_ACTIONS'),
+                    )
+                )
+            ),
+            '\Demo\AdminHelper\News\AdminInterface\CategoriesListHelper'
         );
     }
 }

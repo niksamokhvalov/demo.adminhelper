@@ -32,6 +32,10 @@ class NewsTable extends DataManager
                 'primary' => true,
                 'autocomplete' => true,
             ),
+            'CATEGORY_ID' => array(
+                'data_type' => 'integer',
+                'required' => true,
+            ),
             'DATE_CREATE' => array(
                 'data_type' => 'datetime',
                 'title' => Loc::getMessage('DEMO_AH_NEWS_DATE_CREATE'),
@@ -70,6 +74,10 @@ class NewsTable extends DataManager
                 'data_type' => 'integer',
                 'title' => Loc::getMessage('DEMO_AH_NEWS_IMAGE')
             ),
+            'CATEGORY' => array(
+                'data_type' => '\Demo\AdminHelper\News\CategoriesTable',
+                'reference' => array('=this.CATEGORY_ID' => 'ref.ID'),
+            )
         );
     }
 
