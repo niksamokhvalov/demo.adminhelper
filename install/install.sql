@@ -1,5 +1,4 @@
-DROP TABLE IF EXISTS d_ah_news;
-DROP TABLE IF EXISTS d_ah_news_categories;
+DROP TABLE IF EXISTS d_ah_news, d_ah_news_categories;
 
 CREATE TABLE d_ah_news (
     ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,

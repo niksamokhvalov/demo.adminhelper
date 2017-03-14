@@ -1,2 +1,1 @@
-DROP TABLE IF EXISTS d_ah_news;
-DROP TABLE IF EXISTS d_ah_news_categories;
+DROP TABLE IF EXISTS d_ah_news, d_ah_news_categories;
