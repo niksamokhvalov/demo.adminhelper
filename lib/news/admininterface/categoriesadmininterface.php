@@ -16,10 +16,10 @@ class CategoriesAdminInterface extends AdminInterface
     /**
      * @inheritdoc
      */
-    /*public function dependencies()
+    public function dependencies()
     {
         return array('\Demo\AdminHelper\News\AdminInterface\NewsAdminInterface');
-    }*/
+    }
 
     /**
      * @inheritdoc

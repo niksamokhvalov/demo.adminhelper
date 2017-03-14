@@ -47,6 +47,10 @@ class CategoriesTable extends DataManager
             'TITLE' => array(
                 'data_type' => 'string',
                 'title' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_TITLE')
+            ),
+            'CATEGORY' => array(
+                'data_type' => '\Demo\AdminHelper\News\CategoriesTable',
+                'reference' => array('=this.ID' => 'ref.CATEGORY_ID'),
             )
         );
     }
