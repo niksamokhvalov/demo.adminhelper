@@ -3,7 +3,6 @@
 use Bitrix\Main\ModuleManager;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Loader;
-use Bitrix\Main\IO\File;
 
 IncludeModuleLangFile(__FILE__);
 
@@ -32,11 +31,10 @@ class demo_adminhelper extends CModule
     public function DoInstall()
     {
         global $DB;
-        
+
+        $DB->RunSQLBatch(__DIR__ . '/install.sql');
         ModuleManager::registerModule($this->MODULE_ID);
         Loader::includeModule($this->MODULE_ID);
-
-        $DB->Query(File::getFileContents(__DIR__ . '/install.sql'));
     }
 
     public function DoUninstall()
@@ -45,8 +43,7 @@ class demo_adminhelper extends CModule
         
         Loader::includeModule($this->MODULE_ID);
 
-        $DB->Query(File::getFileContents(__DIR__ . '/uninstall.sql'));
-
+        $DB->RunSQLBatch(__DIR__ . '/uninstall.sql');
         ModuleManager::unRegisterModule($this->MODULE_ID);
     }
 }
