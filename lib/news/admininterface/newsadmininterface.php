@@ -34,22 +34,13 @@ class NewsAdminInterface extends AdminInterface
     {
         return array(
             'MAIN' => array(
-                'NAME' => Loc::getMessage('DEMO_AH_NEWS'),
+                'NAME' => Loc::getMessage('DEMO_AH_NEWS_TAB_TITLE'),
                 'FIELDS' => array(
                     'ID' => array(
                         'WIDGET' => new NumberWidget(),
                         'READONLY' => true,
                         'FILTER' => true,
                         'HIDE_WHEN_CREATE' => true
-                    ),
-                    'CATEGORY_ID' => array(
-                        'WIDGET' => new OrmElementWidget(),
-                        'TITLE' => Loc::getMessage('DEMO_AH_NEWS_CATEGORY'),
-                        'FILTER' => true,
-                        'HEADER' => false,
-                        'TEMPLATE' => 'select',
-                        'HELPER' => '\Demo\AdminHelper\News\AdminInterface\CategoriesListHelper',
-                        'REQUIRED' => true,
                     ),
                     'TITLE' => array(
                         'WIDGET' => new StringWidget(),
@@ -60,6 +51,14 @@ class NewsAdminInterface extends AdminInterface
                     'TEXT' => array(
                         'WIDGET' => new VisualEditorWidget(),
                         'HEADER' => false
+                    ),
+                    'CATEGORY_ID' => array(
+                        'WIDGET' => new OrmElementWidget(),
+                        'FILTER' => true,
+                        'HEADER' => false,
+                        'TEMPLATE' => 'select',
+                        'HELPER' => '\Demo\AdminHelper\News\AdminInterface\CategoriesListHelper',
+                        'REQUIRED' => true,
                     ),
                     'SOURCE' => array(
                         'WIDGET' => new UrlWidget(),

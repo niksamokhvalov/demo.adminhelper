@@ -34,6 +34,7 @@ class NewsTable extends DataManager
             ),
             'CATEGORY_ID' => array(
                 'data_type' => 'integer',
+                'title' => Loc::getMessage('DEMO_AH_NEWS_CATEGORY'),
                 'required' => true,
             ),
             'DATE_CREATE' => array(

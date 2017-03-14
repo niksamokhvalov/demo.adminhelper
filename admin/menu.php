@@ -4,6 +4,7 @@ use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Demo\AdminHelper\News\AdminInterface\NewsEditHelper;
 use Demo\AdminHelper\News\AdminInterface\NewsListHelper;
+use Demo\AdminHelper\News\AdminInterface\CategoriesEditHelper;
 
 if (!Loader::includeModule('digitalwand.admin_helper') || !Loader::includeModule('demo.adminhelper')) return;
 
@@ -19,6 +20,7 @@ return array(
         'url' => NewsListHelper::getUrl(),
         'more_url' => array(
             NewsEditHelper::getUrl(),
+            CategoriesEditHelper::getUrl()
         )
     )
 );

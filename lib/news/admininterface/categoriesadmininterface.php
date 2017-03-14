@@ -28,7 +28,7 @@ class CategoriesAdminInterface extends AdminInterface
     {
         return array(
             'MAIN' => array(
-                'NAME' => Loc::getMessage('DEMO_AH_NEWS'),
+                'NAME' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_TAB_TITLE'),
                 'FIELDS' => array(
                     'ID' => array(
                         'WIDGET' => new NumberWidget(),
@@ -71,16 +71,16 @@ class CategoriesAdminInterface extends AdminInterface
             '\Demo\AdminHelper\News\AdminInterface\CategoriesEditHelper' => array(
                 'BUTTONS' => array(
                     'RETURN_TO_LIST' => array(
-                        'TEXT' => Loc::getMessage('MOS_CONTENT_PROGRAMS_SECTION_RETURN_TO_LIST'),
+                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_RETURN_TO_LIST'),
                     ),
                     'ADD_ELEMENT' => array(
-                        'TEXT' => Loc::getMessage('MOS_CONTENT_PROGRAMS_SECTION_CREATE_NEW'),
+                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_CREATE_NEW'),
                     ),
                     'DELETE_ELEMENT' => array(
-                        'TEXT' => Loc::getMessage('MOS_CONTENT_PROGRAMS_SECTION_DELETE_ELEMENT'),
+                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_DELETE_ELEMENT'),
                     ),
                     'ACTIONS' => array(
-                        'TEXT' => Loc::getMessage('MOS_CONTENT_PROGRAMS_SECTION_ACTIONS'),
+                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_ACTIONS'),
                     )
                 )
             ),
