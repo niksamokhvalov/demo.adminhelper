@@ -22,6 +22,9 @@ Loc::loadMessages(__FILE__);
  */
 class NewsAdminInterface extends AdminInterface
 {
+    /**
+     * @inheritdoc
+     */
     public function dependencies()
     {
         return array('\Demo\AdminHelper\News\AdminInterface\CategoriesAdminInterface');
@@ -44,25 +47,25 @@ class NewsAdminInterface extends AdminInterface
                     ),
                     'TITLE' => array(
                         'WIDGET' => new StringWidget(),
-                        'SIZE' => '80',
+                        'SIZE' => 80,
                         'FILTER' => '%',
+                        'REQUIRED' => true
+                    ),
+                    'CATEGORY_ID' => array(
+                        'WIDGET' => new OrmElementWidget(),
+                        'FILTER' => true,
+                        'HEADER' => false,
+                        'HELPER' => '\Demo\AdminHelper\News\AdminInterface\CategoriesListHelper',
                         'REQUIRED' => true
                     ),
                     'TEXT' => array(
                         'WIDGET' => new VisualEditorWidget(),
                         'HEADER' => false
                     ),
-                    'CATEGORY_ID' => array(
-                        'WIDGET' => new OrmElementWidget(),
-                        'FILTER' => true,
-                        'HEADER' => false,
-                        'TEMPLATE' => 'select',
-                        'HELPER' => '\Demo\AdminHelper\News\AdminInterface\CategoriesListHelper',
-                        'REQUIRED' => true,
-                    ),
                     'SOURCE' => array(
                         'WIDGET' => new UrlWidget(),
-                        'HEADER' => false
+                        'HEADER' => false,
+                        'SIZE' => 80
                     ),
                     'IMAGE' => array(
                         'WIDGET' => new FileWidget(),
@@ -83,7 +86,7 @@ class NewsAdminInterface extends AdminInterface
                         'WIDGET' => new UserWidget(),
                         'READONLY' => true,
                         'HIDE_WHEN_CREATE' => true
-                    ),
+                    )
                 )
             )
         );
@@ -95,8 +98,26 @@ class NewsAdminInterface extends AdminInterface
     public function helpers()
     {
         return array(
-            '\Demo\AdminHelper\News\AdminInterface\NewsListHelper',
-            '\Demo\AdminHelper\News\AdminInterface\NewsEditHelper'
+            '\Demo\AdminHelper\News\AdminInterface\NewsListHelper' => array(
+                'BUTTONS' => array(
+                    'LIST_CREATE_NEW' => array(
+                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_BUTTON_ADD_NEWS'),
+                    ),
+                    'LIST_CREATE_NEW_SECTION' => array(
+                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_BUTTON_ADD_CATEGORY'),
+                    )
+                )
+            ),
+            '\Demo\AdminHelper\News\AdminInterface\NewsEditHelper' => array(
+                'BUTTONS' => array(
+                    'ADD_ELEMENT' => array(
+                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_BUTTON_ADD_NEWS')
+                    ),
+                    'DELETE_ELEMENT' => array(
+                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_BUTTON_DELETE')
+                    )
+                )
+            )
         );
     }
 }

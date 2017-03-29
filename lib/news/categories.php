@@ -8,6 +8,9 @@ use Bitrix\Main\Type\DateTime;
 
 Loc::loadMessages(__FILE__);
 
+/**
+ * Модель категорий новостей.
+ */
 class CategoriesTable extends DataManager
 {
     /**
@@ -29,6 +32,10 @@ class CategoriesTable extends DataManager
                 'primary' => true,
                 'autocomplete' => true,
             ),
+            'PARENT_ID' => array(
+                'data_type' => 'integer',
+                'title' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_PARENT_ID')
+            ),
             'DATE_CREATE' => array(
                 'data_type' => 'datetime',
                 'title' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_DATE_CREATE'),
@@ -48,9 +55,9 @@ class CategoriesTable extends DataManager
                 'data_type' => 'string',
                 'title' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_TITLE')
             ),
-            'CATEGORY' => array(
+            'PARENT_CATEGORY' => array(
                 'data_type' => '\Demo\AdminHelper\News\CategoriesTable',
-                'reference' => array('=this.ID' => 'ref.CATEGORY_ID'),
+                'reference' => array('=this.PARENT_ID' => 'ref.ID'),
             )
         );
     }
