@@ -14,7 +14,7 @@ Loc::loadMessages(__FILE__);
 class NewsTable extends DataManager
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public static function getTableName()
     {
@@ -22,7 +22,7 @@ class NewsTable extends DataManager
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public static function getMap()
     {
@@ -30,7 +30,12 @@ class NewsTable extends DataManager
             'ID' => array(
                 'data_type' => 'integer',
                 'primary' => true,
-                'autocomplete' => true,
+                'autocomplete' => true
+            ),
+            'CATEGORY_ID' => array(
+                'data_type' => 'integer',
+                'title' => Loc::getMessage('DEMO_AH_NEWS_CATEGORY'),
+                'required' => true,
             ),
             'DATE_CREATE' => array(
                 'data_type' => 'datetime',
@@ -70,11 +75,15 @@ class NewsTable extends DataManager
                 'data_type' => 'integer',
                 'title' => Loc::getMessage('DEMO_AH_NEWS_IMAGE')
             ),
+            'CATEGORY' => array(
+                'data_type' => '\Demo\AdminHelper\News\CategoriesTable',
+                'reference' => array('=this.CATEGORY_ID' => 'ref.ID'),
+            )
         );
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public static function update($primary, array $data)
     {

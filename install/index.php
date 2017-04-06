@@ -1,10 +1,8 @@
 <?php
 
-use Bitrix\Main\Application;
 use Bitrix\Main\ModuleManager;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Loader;
-use Demo\AdminHelper\News\NewsTable;
 
 IncludeModuleLangFile(__FILE__);
 
@@ -32,33 +30,20 @@ class demo_adminhelper extends CModule
 
     public function DoInstall()
     {
+        global $DB;
+
+        $DB->RunSQLBatch(__DIR__ . '/install.sql');
         ModuleManager::registerModule($this->MODULE_ID);
         Loader::includeModule($this->MODULE_ID);
-
-        $this->GetConnection()->query("CREATE TABLE " . NewsTable::getTableName() . " (
-            ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-            DATE_CREATE DATETIME,
-            CREATED_BY INT,
-            MODIFIED_BY INT,
-            TITLE VARCHAR(255),
-            TEXT LONGTEXT,
-            TEXT_TEXT_TYPE VARCHAR(255),
-            SOURCE VARCHAR(255),
-            IMAGE INT
-        );");
     }
 
     public function DoUninstall()
     {
+        global $DB;
+        
         Loader::includeModule($this->MODULE_ID);
 
-        $this->GetConnection()->dropTable(NewsTable::getTableName());
-
+        $DB->RunSQLBatch(__DIR__ . '/uninstall.sql');
         ModuleManager::unRegisterModule($this->MODULE_ID);
-    }
-
-    protected function GetConnection()
-    {
-        return Application::getInstance()->getConnection(NewsTable::getConnectionName());
     }
 }

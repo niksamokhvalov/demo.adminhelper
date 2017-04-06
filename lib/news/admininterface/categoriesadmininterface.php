@@ -5,29 +5,26 @@ namespace Demo\AdminHelper\News\AdminInterface;
 use Bitrix\Main\Localization\Loc;
 use DigitalWand\AdminHelper\Helper\AdminInterface;
 use DigitalWand\AdminHelper\Widget\DateTimeWidget;
-use DigitalWand\AdminHelper\Widget\FileWidget;
 use DigitalWand\AdminHelper\Widget\NumberWidget;
 use DigitalWand\AdminHelper\Widget\OrmElementWidget;
 use DigitalWand\AdminHelper\Widget\StringWidget;
-use DigitalWand\AdminHelper\Widget\UrlWidget;
 use DigitalWand\AdminHelper\Widget\UserWidget;
-use DigitalWand\AdminHelper\Widget\VisualEditorWidget;
 
 Loc::loadMessages(__FILE__);
 
 /**
- * Описание интерфейса (табок и полей) админки новостей.
+ * Описание интерфейса (табок и полей) админки категорий новостей.
  *
  * {@inheritdoc}
  */
-class NewsAdminInterface extends AdminInterface
+class CategoriesAdminInterface extends AdminInterface
 {
     /**
      * @inheritdoc
      */
     public function dependencies()
     {
-        return array('\Demo\AdminHelper\News\AdminInterface\CategoriesAdminInterface');
+        return array('\Demo\AdminHelper\News\AdminInterface\NewsAdminInterface');
     }
 
     /**
@@ -37,7 +34,7 @@ class NewsAdminInterface extends AdminInterface
     {
         return array(
             'MAIN' => array(
-                'NAME' => Loc::getMessage('DEMO_AH_NEWS_TAB_TITLE'),
+                'NAME' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_TAB_TITLE'),
                 'FIELDS' => array(
                     'ID' => array(
                         'WIDGET' => new NumberWidget(),
@@ -47,30 +44,15 @@ class NewsAdminInterface extends AdminInterface
                     ),
                     'TITLE' => array(
                         'WIDGET' => new StringWidget(),
-                        'SIZE' => 80,
+                        'SIZE' => '80',
                         'FILTER' => '%',
-                        'REQUIRED' => true
+                        'REQUIRED' => true,
+                        'SECTION_LINK' => true
                     ),
-                    'CATEGORY_ID' => array(
+                    'PARENT_ID' => array(
                         'WIDGET' => new OrmElementWidget(),
-                        'FILTER' => true,
-                        'HEADER' => false,
                         'HELPER' => '\Demo\AdminHelper\News\AdminInterface\CategoriesListHelper',
-                        'REQUIRED' => true
-                    ),
-                    'TEXT' => array(
-                        'WIDGET' => new VisualEditorWidget(),
-                        'HEADER' => false
-                    ),
-                    'SOURCE' => array(
-                        'WIDGET' => new UrlWidget(),
-                        'HEADER' => false,
-                        'SIZE' => 80
-                    ),
-                    'IMAGE' => array(
-                        'WIDGET' => new FileWidget(),
-                        'IMAGE' => true,
-                        'HEADER' => false
+                        'LIST' => false
                     ),
                     'DATE_CREATE' => array(
                         'WIDGET' => new DateTimeWidget(),
@@ -98,26 +80,23 @@ class NewsAdminInterface extends AdminInterface
     public function helpers()
     {
         return array(
-            '\Demo\AdminHelper\News\AdminInterface\NewsListHelper' => array(
+            '\Demo\AdminHelper\News\AdminInterface\CategoriesEditHelper' => array(
                 'BUTTONS' => array(
-                    'LIST_CREATE_NEW' => array(
-                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_BUTTON_ADD_NEWS'),
+                    'RETURN_TO_LIST' => array(
+                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_RETURN_TO_LIST')
                     ),
-                    'LIST_CREATE_NEW_SECTION' => array(
-                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_BUTTON_ADD_CATEGORY'),
+                    'ADD_ELEMENT' => array(
+                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_CREATE_NEW')
+                    ),
+                    'DELETE_ELEMENT' => array(
+                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_DELETE_ELEMENT')
+                    ),
+                    'ACTIONS' => array(
+                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_CATEGORIES_ACTIONS')
                     )
                 )
             ),
-            '\Demo\AdminHelper\News\AdminInterface\NewsEditHelper' => array(
-                'BUTTONS' => array(
-                    'ADD_ELEMENT' => array(
-                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_BUTTON_ADD_NEWS')
-                    ),
-                    'DELETE_ELEMENT' => array(
-                        'TEXT' => Loc::getMessage('DEMO_AH_NEWS_BUTTON_DELETE')
-                    )
-                )
-            )
+            '\Demo\AdminHelper\News\AdminInterface\CategoriesListHelper'
         );
     }
 }
